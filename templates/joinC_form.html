@@ -3,14 +3,23 @@
 <html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
    <!----<title>Login Form Design | CodeLab</title>---->
-    <link rel="stylesheet" href="login_style02.css">
-    <title>노른자|로그인메인로그인</title>
+    <link rel="stylesheet" href="join_style.css">
+
     <script>
       $(document).ready(function () {
         showArticles();
@@ -26,7 +35,9 @@
         }
         
     </script>
-
+    
+    <title>노른자|회원가입</title>
+    
   </head>
   <body>
     <div class="wrapper">
@@ -68,46 +79,56 @@
       </nav>
     </div>
 
-  <!-- /////여기부터메인입니다///// -->
-
-    <div class="login_box">
-      <div class="title"><img src="img/logo_02.gif" id="logo">로그인</div>
+    <div class="join_box">
+      <div class="title"><img src="img/logo_02.gif" id="logo">보호자회원가입</div>
       <form action="#">
-        <div style="display: flex;">
-          <div class="content">
-              <div class="checkbox">
-                <input type="checkbox" id="remember-me">
-                <label for="remember-me">대상자</label>
-              </div>
-            </div>
-            <div class="content">
-              <div class="checkbox">
-                <input type="checkbox" id="remember-me">
-                <label for="remember-me">보호자</label>
-              </div>
-            </div>
-        </div>
-        <div class="field">
-          
+        
+        <div class="field" style="display: flex;">
           <input type="text" required>
           <label>아이디@주소</label>
+          <input type="submit" value="중복조회하기" id="search_btn" >
         </div>
         <div class="field">
           <input type="password" required>
           <label>비밀번호</label>
         </div>
-        <div class="content">
-          <div class="checkbox">
-            <input type="checkbox" id="remember-me">
-            <label for="remember-me">아이디 비밀번호 저장</label>
-          </div>
-          <div class="pass-link" id="forgot"><a href="#">잊으셨나요?</a></div>
+        <div class="field">
+          <input type="password-check" required>
+          <label>비밀번호 확인</label>
         </div>
         <div class="field">
-          <input type="submit" value="로그인하기">
+          <input type="name" required>
+          <label>이름</label>
         </div>
-        <div class="signup-link">회원가입안하셨어요? <a href="#">가입하기!</a></div>
+        <div class="field">
+            <input type="adress" required>
+            <label>주소</label>
+          </div>
+<!-- 대상자 입력부분 -->
+        <div class="head" >
+            <h3>대상자 입력</h3>
+            <button class="btn alert-secondary" id="leadme">대상자 추가 </button>
+        </div>
+        <div id="partners">
+            <div class="em" id="relationship">
+                <select class="form-control form-control-md">
+                <option>가족</option>
+                <option>복지사</option>
+                <option>그외</option>
+                </select>
+            <div class="field"id="partner-id">
+                <input type="em_member" required style="width:200px;">
+                <label>대상자아이디</label>
+            </div>
+          </div>
+        </div>
+            <div class="field">
+              <input type="submit" value="회원가입">
+            </div>
       </form>
+        
+
+
       <br>
         <!-- <div id="sizing">
             <a href='#' class='btn-floating'><div><span style="font-size: 12;">가</span>+</div></a> 
@@ -115,5 +136,23 @@
             <a href='#' class='btn-floating'><div><span style="font-size: 5;">가</span>-</div></a>
         </div> -->
     </div>
+
+    <script>
+      $(function() {
+        $("button").on("click",function(){
+          $("#partners").append(`<div class="em" id="relationship">
+            <select class="form-control form-control-md">
+            <option>가족</option>
+            <option>복지사</option>
+            <option>그외</option>
+            </select>
+          <div class="field"id="partner-id">
+            <input type="em_member" required style="width:200px;">
+            <label>대상자아이디</label>`);
+        });
+      });
+
+
+    </script>
   </body>
 </html>

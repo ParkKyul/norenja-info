@@ -6,17 +6,17 @@ import hashlib
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from datetime import datetime, timedelta
+from sqlalchemy import databases
 
-
-connect = pymysql.connect(
+connect = pymysql.DBAPISet(
     host="localhost",
     port=3306,
     user="root",
-    password="1234",
+    password="jejus3575.",
     db="dblogin",
     charset="utf8",
 )
-cursor = connect.cursor(pymysql.cursors.DictCursor)
+cursor = connect.cursor(databases.cursors.DictCursor)
 
 
 app = Flask(__name__)
