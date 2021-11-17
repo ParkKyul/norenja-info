@@ -6,17 +6,17 @@ import hashlib
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from datetime import datetime, timedelta
-from sqlalchemy import databases
 
-connect = pymysql.DBAPISet(
+
+connect = pymysql.connect(
     host="localhost",
     port=3306,
     user="root",
     password="jejus3575.",
-    db="dblogin",
+    db="egg",
     charset="utf8",
 )
-cursor = connect.cursor(databases.cursors.DictCursor)
+cursor = connect.cursor(pymysql.cursors.DictCursor)
 
 
 app = Flask(__name__)
@@ -36,7 +36,7 @@ def home():
         cursor.execute(sql % (payload["id"]))
         result = cursor.fetchone()
 
-        return render_template("index.html", user_info=result)
+        return render_template("main.html", user_info=result)
 
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
@@ -47,7 +47,7 @@ def home():
 @app.route("/login")
 def login():
     msg = request.args.get("msg")
-    return render_template("login.html", msg=msg)
+    return render_template("login_form01.html", msg=msg)
 
 
 @app.route("/user/<username>")
